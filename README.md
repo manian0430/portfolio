@@ -1,112 +1,129 @@
-# Crypto Research Assistant
+# Ian Managuelod Portfolio Website
 
-A modern web application that provides real-time cryptocurrency analysis powered by AI. The application combines market data, news feeds, and AI-driven analysis to provide comprehensive insights for cryptocurrency research.
+A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS, featuring an advanced Crypto Research Assistant.
 
-## Features
+## Portfolio Features
+
+- Modern, responsive design with dark mode support
+- Interactive UI components
+- Portfolio showcase
+- Contact form
+- Skills visualization
+- Work experience timeline
+- Smooth animations and transitions
+
+## Crypto Research Assistant
+
+An integrated cryptocurrency analysis tool that provides real-time insights:
 
 ### Real-Time Data Sources
 - **Market Data**: Live cryptocurrency prices, market cap, and 24h changes via CoinGecko API
-- **News Feeds**: Real-time news aggregation from multiple sources:
+- **News Feeds**: Real-time news aggregation from:
   - CoinTelegraph
   - CryptoNews
   - Decrypt
 - **AI Analysis**: Powered by Google's Gemini Pro AI model
 
-### Analysis Crew
-The application features four specialized AI analysts:
-
+### AI Analysis Crew
 1. **Market Analyst**
-   - Analyzes price trends and market sentiment
-   - Provides real-time market overview
-   - Tracks trading volume and market metrics
+   - Real-time price trends and sentiment analysis
+   - Market overview and metrics
 
 2. **Price Predictor**
-   - Forecasts short-term (24h) price movements
-   - Analyzes medium-term (1 week) trends
-   - Projects long-term (1 month) price directions
-   - Evaluates confidence levels
+   - Short-term (24h) forecasts
+   - Medium-term (1 week) analysis
+   - Long-term (1 month) projections
 
 3. **News Researcher**
-   - Monitors crypto news in real-time
-   - Analyzes news sentiment
-   - Tracks regulatory developments
-   - Provides source-verified news links
+   - Real-time crypto news monitoring
+   - Sentiment analysis
+   - Regulatory updates
 
 4. **Risk Assessor**
-   - Evaluates market risks
-   - Analyzes price volatility
-   - Assesses market liquidity
-   - Monitors network health
+   - Market risk evaluation
+   - Volatility analysis
+   - Liquidity assessment
 
-### User Interface
-- Modern, responsive design with dark mode
-- Real-time data updates
-- Interactive news cards
-- Visual market indicators
-- Quick-select popular cryptocurrencies
+## Tech Stack
 
-## Technology Stack
-
-- **Frontend**: Next.js 14 with React
+- **Framework**: Next.js 14
+- **Language**: TypeScript
 - **Styling**: Tailwind CSS
-- **UI Components**: Custom components with shadcn/ui
+- **UI Components**: shadcn/ui
 - **Animations**: Framer Motion
+- **Icons**: Lucide Icons
 - **API Integration**: 
-  - CoinGecko API for market data
-  - RSS Parser for news feeds
-  - Google Gemini Pro for AI analysis
+  - CoinGecko API
+  - RSS Parser
+  - Google Gemini Pro
+
+## Prerequisites
+
+Before running this application, make sure you have:
+- Node.js (v18.0.0 or higher)
+- npm (v8.0.0 or higher) or yarn
 
 ## Getting Started
 
-1. Clone the repository
+1. **Clone the repository**
 ```bash
-git clone [repository-url]
-cd [repository-name]
+git clone [your-repository-url]
+cd fide-ian-code-frontend
 ```
 
-2. Install dependencies
+2. **Install dependencies**
 ```bash
 npm install
+# or
+yarn install
 ```
 
-3. Set up environment variables
+3. **Set up environment variables**
 Create a `.env.local` file with:
 ```
 GOOGLE_API_KEY=your-google-api-key
 ```
 
-4. Run the development server
+4. **Run the development server**
 ```bash
 npm run dev
+# or
+yarn dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+5. **Open the application**
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Project Structure
+
+- `app/` - Next.js app router pages and layouts
+- `components/` - Reusable UI components
+- `public/` - Static assets
+- `lib/` - Utility functions and shared logic
 
 ## API Endpoints
 
-### POST /api/crypto-analysis
-Analyzes a cryptocurrency and returns comprehensive data:
-- Market metrics
-- Latest news
-- AI-driven analysis
-- Risk assessment
+### Portfolio Endpoints
+- `GET /api/contact` - Contact form submission
+- `GET /api/portfolio` - Portfolio data
 
-Request body:
-```json
-{
-  "coin": "Bitcoin"
-}
-```
+### Crypto Research Endpoints
+- `POST /api/crypto-analysis` - Comprehensive crypto analysis
+- `GET /api/test-news` - Latest crypto news
 
-### GET /api/test-news
-Returns the latest cryptocurrency news from multiple sources.
+## Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
 ## Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
 ## License
@@ -115,6 +132,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgments
 
-- CoinGecko API for market data
+- CoinGecko API for crypto market data
 - News sources: CoinTelegraph, CryptoNews, and Decrypt
 - Google Gemini Pro for AI capabilities
+- shadcn/ui for beautiful UI components
