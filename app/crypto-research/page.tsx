@@ -104,6 +104,27 @@ const popularCoins = [
   { symbol: "ADA", name: "Cardano" }
 ];
 
+const LoadingCard = ({ title, icon }: { title: string; icon: React.ReactNode }) => (
+  <Card className="bg-black/40 backdrop-blur-sm border-white/10">
+    <CardContent className="p-4">
+      <div className="flex items-center gap-2 mb-4">
+        {icon}
+        <h3 className="font-medium text-white">{title}</h3>
+        <div className="ml-auto">
+          <Badge variant="gradient-subtle" className="animate-pulse bg-white/10">
+            Analyzing...
+          </Badge>
+        </div>
+      </div>
+      <div className="space-y-4">
+        <div className="h-4 bg-white/5 rounded animate-pulse" />
+        <div className="h-4 bg-white/5 rounded animate-pulse w-3/4" />
+        <div className="h-4 bg-white/5 rounded animate-pulse w-1/2" />
+      </div>
+    </CardContent>
+  </Card>
+);
+
 export default function CryptoResearch() {
   const [query, setQuery] = useState("")
   const [selectedCoin, setSelectedCoin] = useState<string>("")
@@ -145,6 +166,21 @@ export default function CryptoResearch() {
       setIsAnalyzing(false);
     }
   };
+
+  // Add loading cards when analyzing
+  const renderLoadingState = () => (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      className="grid grid-cols-1 md:grid-cols-2 gap-4"
+    >
+      <LoadingCard title="Market Analysis" icon={<LineChart className="w-5 h-5 text-green-400" />} />
+      <LoadingCard title="Price Prediction" icon={<TrendingUp className="w-5 h-5 text-blue-400" />} />
+      <LoadingCard title="News Analysis" icon={<Newspaper className="w-5 h-5 text-purple-400" />} />
+      <LoadingCard title="Risk Assessment" icon={<AlertTriangle className="w-5 h-5 text-red-400" />} />
+    </motion.div>
+  );
 
   return (
     <main className="flex min-h-screen flex-col items-center p-4 relative">
@@ -227,7 +263,9 @@ export default function CryptoResearch() {
 
         {/* Analysis Results */}
         <AnimatePresence>
-          {results && (
+          {isAnalyzing ? (
+            renderLoadingState()
+          ) : results && (
             <>
               <div className="mb-4 text-center">
                 <p className="text-white/60 text-sm">

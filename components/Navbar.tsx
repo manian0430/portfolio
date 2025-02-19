@@ -4,6 +4,9 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
+import { Menu } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { useState } from "react"
 
 const navigation = [
   { name: 'About', href: '/about' },
@@ -14,6 +17,7 @@ const navigation = [
 ]
 
 export default function Navbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
 
   return (
@@ -25,9 +29,23 @@ export default function Navbar() {
         transition={{ duration: 0.5 }}
       />
       <nav className="container mx-auto px-4 relative">
-        <div className="flex h-16 items-center justify-center">
+        <div className="flex h-16 items-center justify-between md:justify-center">
+          {/* Mobile menu button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden text-white/60 hover:text-white"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <Menu className="h-6 w-6" />
+          </Button>
+
           <motion.div 
-            className="flex gap-2"
+            className={cn(
+              "flex gap-2",
+              "md:flex",
+              isMobileMenuOpen ? "absolute top-16 left-0 right-0 flex-col bg-black/50 backdrop-blur-md p-4 border-b border-white/10" : "hidden"
+            )}
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -39,6 +57,7 @@ export default function Navbar() {
                   key={item.name}
                   href={item.href}
                   className="relative px-4 py-2 group"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <span className={cn(
                     "relative z-10 text-sm font-medium transition-colors duration-200",

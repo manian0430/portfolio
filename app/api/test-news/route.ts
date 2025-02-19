@@ -33,30 +33,46 @@ const CRYPTO_RSS_FEEDS = [
   }
 ];
 
+// Helper function to fetch with timeout
+async function fetchWithTimeout(feed: typeof CRYPTO_RSS_FEEDS[0], timeoutMs: number = 5000) {
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), timeoutMs);
+    
+    const feedData = await parser.parseURL(feed.url);
+    clearTimeout(timeout);
+    
+    return feedData.items.map(item => ({
+      title: item.title || '',
+      link: item.link || '',
+      pubDate: item.pubDate || '',
+      source: feed.source,
+      description: item.contentSnippet || ''
+    }));
+  } catch (error) {
+    console.error(`Error fetching from ${feed.source}:`, error);
+    return [];
+  }
+}
+
 export async function GET() {
   try {
-    // Fetch news from multiple sources in parallel
-    const newsPromises = CRYPTO_RSS_FEEDS.map(async feed => {
-      try {
-        const feedData = await parser.parseURL(feed.url);
-        return feedData.items.map(item => ({
-          title: item.title || '',
-          link: item.link || '',
-          pubDate: item.pubDate || '',
-          source: feed.source,
-          description: item.contentSnippet || ''
-        }));
-      } catch (error) {
-        console.error(`Error fetching from ${feed.source}:`, error);
-        return [];
-      }
-    });
-
+    // Fetch news from multiple sources in parallel with timeout
+    const newsPromises = CRYPTO_RSS_FEEDS.map(feed => fetchWithTimeout(feed));
+    
     const allNews = await Promise.all(newsPromises);
     const combinedNews = allNews
       .flat()
+      .filter(news => news.title && news.link) // Filter out invalid entries
       .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime())
       .slice(0, 10); // Get latest 10 news items
+
+    if (combinedNews.length === 0) {
+      return Response.json({ 
+        error: 'No news available at the moment',
+        Data: []
+      }, { status: 404 });
+    }
 
     return Response.json({
       Data: combinedNews
