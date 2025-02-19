@@ -1,111 +1,120 @@
-# Ian Managuelod Portfolio Website
+# Crypto Research Assistant
 
-A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS.
-
-## Prerequisites
-
-Before running this application, make sure you have the following installed:
-- Node.js (v18.0.0 or higher)
-- npm (v8.0.0 or higher) or yarn
-
-## Tech Stack
-
-- **Framework**: Next.js 14
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **UI Components**: shadcn/ui
-- **Icons**: Lucide Icons
-
-## Getting Started
-
-1. **Clone the repository**
-   ```bash
-   git clone [your-repository-url]
-   cd fide-ian-code-frontend
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-
-3. **Run the development server**
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
-
-4. **Open the application**
-   Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
-
-## Project Structure
-
-- `app/` - Next.js app router pages and layouts
-- `components/` - Reusable UI components
-- `public/` - Static assets
-- `lib/` - Utility functions and shared logic
+A modern web application that provides real-time cryptocurrency analysis powered by AI. The application combines market data, news feeds, and AI-driven analysis to provide comprehensive insights for cryptocurrency research.
 
 ## Features
 
-- Modern, responsive design
-- Dark mode support
-- Smooth animations and transitions
-- Interactive UI components
-- Portfolio showcase
-- Contact form
-- Skills visualization
-- Work experience timeline
+### Real-Time Data Sources
+- **Market Data**: Live cryptocurrency prices, market cap, and 24h changes via CoinGecko API
+- **News Feeds**: Real-time news aggregation from multiple sources:
+  - CoinTelegraph
+  - CryptoNews
+  - Decrypt
+- **AI Analysis**: Powered by Google's Gemini Pro AI model
 
-## Dependencies
+### Analysis Crew
+The application features four specialized AI analysts:
 
-All dependencies are listed in `package.json`. Key dependencies include:
+1. **Market Analyst**
+   - Analyzes price trends and market sentiment
+   - Provides real-time market overview
+   - Tracks trading volume and market metrics
 
+2. **Price Predictor**
+   - Forecasts short-term (24h) price movements
+   - Analyzes medium-term (1 week) trends
+   - Projects long-term (1 month) price directions
+   - Evaluates confidence levels
+
+3. **News Researcher**
+   - Monitors crypto news in real-time
+   - Analyzes news sentiment
+   - Tracks regulatory developments
+   - Provides source-verified news links
+
+4. **Risk Assessor**
+   - Evaluates market risks
+   - Analyzes price volatility
+   - Assesses market liquidity
+   - Monitors network health
+
+### User Interface
+- Modern, responsive design with dark mode
+- Real-time data updates
+- Interactive news cards
+- Visual market indicators
+- Quick-select popular cryptocurrencies
+
+## Technology Stack
+
+- **Frontend**: Next.js 14 with React
+- **Styling**: Tailwind CSS
+- **UI Components**: Custom components with shadcn/ui
+- **Animations**: Framer Motion
+- **API Integration**: 
+  - CoinGecko API for market data
+  - RSS Parser for news feeds
+  - Google Gemini Pro for AI analysis
+
+## Getting Started
+
+1. Clone the repository
+```bash
+git clone [repository-url]
+cd [repository-name]
+```
+
+2. Install dependencies
+```bash
+npm install
+```
+
+3. Set up environment variables
+Create a `.env.local` file with:
+```
+GOOGLE_API_KEY=your-google-api-key
+```
+
+4. Run the development server
+```bash
+npm run dev
+```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## API Endpoints
+
+### POST /api/crypto-analysis
+Analyzes a cryptocurrency and returns comprehensive data:
+- Market metrics
+- Latest news
+- AI-driven analysis
+- Risk assessment
+
+Request body:
 ```json
 {
-  "dependencies": {
-    "@radix-ui/react-dialog": "^1.1.6",
-    "@radix-ui/react-slot": "1.0.2",
-    "class-variance-authority": "0.7.0",
-    "clsx": "2.0.0",
-    "framer-motion": "^12.4.3",
-    "lucide-react": "^0.475.0",
-    "next": "14.0.4",
-    "next-themes": "0.2.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "tailwind-merge": "2.1.0"
-  },
-  "devDependencies": {
-    "@types/node": "20.10.4",
-    "@types/react": "18.2.42",
-    "@types/react-dom": "18.2.17",
-    "autoprefixer": "10.4.16",
-    "postcss": "8.4.32",
-    "tailwindcss": "3.3.6",
-    "typescript": "5.3.3"
-  }
+  "coin": "Bitcoin"
 }
 ```
 
-## Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
+### GET /api/test-news
+Returns the latest cryptocurrency news from multiple sources.
 
 ## Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- CoinGecko API for market data
+- News sources: CoinTelegraph, CryptoNews, and Decrypt
+- Google Gemini Pro for AI capabilities

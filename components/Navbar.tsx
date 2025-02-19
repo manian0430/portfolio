@@ -6,11 +6,11 @@ import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
 
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Portfolio', href: '/portfolio' },
   { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
-  { name: 'Let\'s Talk', href: '/lets-talk' },
+  { name: 'Portfolio', href: '/portfolio' },
+  { name: "Let's Talk", href: '/lets-talk' },
+  { name: 'Crypto Research', href: '/crypto-research' },
+  { name: 'Contact', href: '/contact' }
 ]
 
 export default function Navbar() {
